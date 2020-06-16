@@ -1,4 +1,5 @@
 const User = require('./user')
+const Beats = require('./beats')
 const Genre = require('./genres')
 const Order = require('./order')
 
@@ -7,6 +8,16 @@ const Order = require('./order')
  * ex. if we had another model called BlogPost, we might say:
  *
  *    BlogPost.belongsTo(User)
+ * Associations:
+ *
+      User.hasMany(Order)
+      Order.belongsTo(User)
+
+      Order.hasMany(Beats)
+      Beats.hasMany(Order)
+      Order.belongsToMany(Beats, { through: "beat_order" })
+      Beats.belongsToMany(Order, { through: "beat_order" })
+
  */
 
 /**
@@ -18,5 +29,6 @@ const Order = require('./order')
 module.exports = {
   User,
   Genre,
+  Beats,
   Order
 }
