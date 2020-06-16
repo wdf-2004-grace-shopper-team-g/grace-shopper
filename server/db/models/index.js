@@ -1,5 +1,7 @@
 const User = require('./user')
 const Beats = require('./beats')
+const Genre = require('./genres')
+const Order = require('./order')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -26,5 +28,7 @@ const Beats = require('./beats')
  */
 module.exports = {
   User,
-  Beats
+  Genre,
+  Beats,
+  Order
 }
