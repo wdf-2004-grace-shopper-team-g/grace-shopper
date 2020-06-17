@@ -71,7 +71,6 @@ User.prototype.getAllBeats = async function() {
   const beatOrders = await db.models.beat_order.findAll({
     where: {
       orderId: {
-
         [Op.in]: arrOrderId
       }
     }
