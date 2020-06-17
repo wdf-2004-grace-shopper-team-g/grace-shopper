@@ -20,10 +20,12 @@ router.get('/:id', async (req, res, next) => {
   try {
     // const user = await User.findByPk(req.params.id)
     let user = await User.findOne({where: {id: req.params.id}})
+    // console.log("this is USER***", user)
+    // user = await user.getAllBeats()
+    let userBeats = await user.getAllBeats()
 
-    user = await user.getAllBeats()
     // console.view("UUUUUUU: User **** ", user)
-    res.json(user)
+    res.json({user, userBeats})
   } catch (err) {
     next(err)
   }
