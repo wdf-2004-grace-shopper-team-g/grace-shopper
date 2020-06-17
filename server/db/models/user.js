@@ -56,23 +56,26 @@ User.prototype.getAllBeats = async function() {
     where: {userId: this.id}
   })
 
+  console.log('this is ORDERS****', orders)
+
   // arrOfBeats
   const arrOrderId = []
-  let curBeatId
-
+  let curOrderId
+  // console.log('this is MODELS!', db.models)
   for (let i = 0; i < orders.length; i++) {
-    curBeatId = orders[i].dataValues.id
-    arrOrderId.push(curBeatId)
+    curOrderId = orders[i].dataValues.id
+    // console.log('this is current order id******', curOrderId)
+    arrOrderId.push(curOrderId)
   }
-  const allBeats = await Beats.findAll({
+
+  const beatOrders = await db.models.beat_order.findAll({
     where: {
-      id: {
+      orderId: {
+
         [Op.in]: arrOrderId
       }
     }
   })
-
-  return allBeats
 }
 
 /**
