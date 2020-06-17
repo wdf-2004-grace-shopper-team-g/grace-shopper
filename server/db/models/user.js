@@ -1,11 +1,26 @@
 const crypto = require('crypto')
 const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 const db = require('../db')
+const Beats = require('./beats')
+const Order = require('./order')
 
 const User = db.define('user', {
   email: {
     type: Sequelize.STRING,
     unique: true,
+    allowNull: false
+  },
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  address: {
+    type: Sequelize.STRING,
     allowNull: false
   },
   password: {
@@ -29,13 +44,35 @@ const User = db.define('user', {
   }
 })
 
-module.exports = User
-
 /**
  * instanceMethods
  */
 User.prototype.correctPassword = function(candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
+}
+
+User.prototype.getAllBeats = async function() {
+  const orders = await Order.findAll({
+    where: {userId: this.id}
+  })
+
+  // arrOfBeats
+  const arrOrderId = []
+  let curBeatId
+
+  for (let i = 0; i < orders.length; i++) {
+    curBeatId = orders[i].dataValues.id
+    arrOrderId.push(curBeatId)
+  }
+  const allBeats = await Beats.findAll({
+    where: {
+      id: {
+        [Op.in]: arrOrderId
+      }
+    }
+  })
+
+  return allBeats
 }
 
 /**
@@ -68,3 +105,5 @@ User.beforeUpdate(setSaltAndPassword)
 User.beforeBulkCreate(users => {
   users.forEach(setSaltAndPassword)
 })
+
+module.exports = User

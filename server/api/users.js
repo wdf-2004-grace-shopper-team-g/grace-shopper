@@ -15,3 +15,16 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    // const user = await User.findByPk(req.params.id)
+    let user = await User.findOne({where: {id: req.params.id}})
+
+    user = await user.getAllBeats()
+    // console.view("UUUUUUU: User **** ", user)
+    res.json(user)
+  } catch (err) {
+    next(err)
+  }
+})
