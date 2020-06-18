@@ -31,5 +31,6 @@ Order.belongsToMany(Beats, {through: OrderItem})
 module.exports = {
   User,
   Beats,
-  Order
+  Order,
+  OrderItem
 }
