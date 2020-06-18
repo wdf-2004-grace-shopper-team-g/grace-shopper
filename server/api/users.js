@@ -23,10 +23,10 @@ router.get('/:id', async (req, res, next) => {
 
     // console.log("this is USER***", user)
     // user = await user.getAllBeats()
-    let userBeats = await user.getAllBeats()
+    // let userBeats = await user.getAllBeats()
 
     // console.view("UUUUUUU: User **** ", user)
-    res.json({user, userBeats})
+    res.json({user})
   } catch (err) {
     next(err)
   }
