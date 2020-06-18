@@ -16,12 +16,19 @@ const User = db.define('user', {
     allowNull: false
   },
   lastName: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
+  },
+  userType: {
+    type: Sequelize.ENUM('seller', 'buyer', 'admin'),
     allowNull: false
   },
-  address: {
+  imgUrl: {
     type: Sequelize.STRING,
-    allowNull: false
+    defaultValue:
+      'http://www.droid-life.com/wp-content/uploads/2014/05/beats-logo.jpg'
+  },
+  address: {
+    type: Sequelize.STRING
   },
   password: {
     type: Sequelize.STRING,
