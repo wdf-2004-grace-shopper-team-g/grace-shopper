@@ -3,6 +3,13 @@
 const db = require('../server/db')
 const {User} = require('../server/db/models')
 const {Beats} = require('../server/db/models')
+const faker = require('faker')
+
+var randomFirstName = faker.name.firstName()
+var randomLastName = faker.name.lastName()
+var randomAddress = faker.address.streetAddress()
+
+var randomEmail = faker.internet.email()
 
 async function seed() {
   await db.sync({force: true})
@@ -10,26 +17,55 @@ async function seed() {
 
   const users = await Promise.all([
     User.create({
-      email: 'cody@email.com',
-      password: '123',
-      firstName: 'Cody',
-      lastName: 'Santos',
-      userType: 'buyer',
-      address: '1200 Broadway NY NY 10038'
-    }),
-    User.create({
       email: 'murphy@email.com',
       password: '123',
       firstName: 'Murphy',
       lastName: 'Santos',
       userType: 'buyer',
       address: '1200 Broadway NY NY 10038'
+    }),
+    User.create({
+      email: randomEmail,
+      password: '123',
+      firstName: 'Murphy',
+      lastName: 'Santos',
+      userType: 'buyer',
+      address: '1200 Broadway NY NY 10038'
+      firstName: randomFirstName,
+      lastName: randomLastName,
+      address: randomAddress
+    }),
+    User.create({
+      email: faker.internet.email(),
+      password: '123',
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      address: faker.address.streetAddress()
+    }),
+    User.create({
+      email: faker.internet.email(),
+      password: '123',
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      address: faker.address.streetAddress()
+    }),
+    User.create({
+      email: faker.internet.email(),
+      password: '123',
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      address: faker.address.streetAddress()
     })
   ])
 
   const beats = await Promise.all([
     Beats.create({title: 'hotfire', price: 1000, rating: 4}),
     Beats.create({title: 'Summer2020', price: 1000000, rating: 5})
+    Beats.create({name: 'hotfire', price: 1000, rating: 4}),
+    Beats.create({name: 'Summer2020', price: 1000000, rating: 5}),
+    Beats.create({name: 'Luis Miguel', price: 99, rating: 5}),
+    Beats.create({name: 'Hector Lavoe', price: 75, rating: 5}),
+    Beats.create({name: 'Cesar Chavez', price: 50, rating: 4})
   ])
 
   console.log(`seeded ${users.length} users`)
