@@ -14,6 +14,8 @@ async function seed() {
       password: '123',
       firstName: 'Cody',
       lastName: 'Santos',
+      userType: 'buyer',
+      imgUrl: '',
       address: '1200 Broadway NY NY 10038'
     }),
     User.create({
@@ -26,8 +28,8 @@ async function seed() {
   ])
 
   const beats = await Promise.all([
-    Beats.create({name: 'hotfire', price: 1000, rating: 4}),
-    Beats.create({name: 'Summer2020', price: 1000000, rating: 5})
+    Beats.create({title: 'hotfire', price: 1000, rating: 4}),
+    Beats.create({title: 'Summer2020', price: 1000000, rating: 5})
   ])
 
   console.log(`seeded ${users.length} users`)
