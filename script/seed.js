@@ -15,7 +15,6 @@ async function seed() {
       firstName: 'Cody',
       lastName: 'Santos',
       userType: 'buyer',
-      imgUrl: '',
       address: '1200 Broadway NY NY 10038'
     }),
     User.create({
@@ -23,6 +22,7 @@ async function seed() {
       password: '123',
       firstName: 'Murphy',
       lastName: 'Santos',
+      userType: 'buyer',
       address: '1200 Broadway NY NY 10038'
     })
   ])

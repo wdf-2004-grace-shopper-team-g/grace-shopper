@@ -19,7 +19,7 @@ const User = db.define('user', {
     type: Sequelize.STRING
   },
   userType: {
-    type: Sequelize.ENUM('seller', 'buyer'),
+    type: Sequelize.ENUM('seller', 'buyer', 'admin'),
     allowNull: false
   },
   imgUrl: {
