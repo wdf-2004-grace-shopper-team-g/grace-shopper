@@ -1,24 +1,28 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Beats = db.define('beats', {
+const Beat = db.define('beats', {
   title: {
     type: Sequelize.STRING,
-    allowNull: false
+    notEmpty: true
   },
   author: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    notEmpty: true
   },
-  releasedDate: {
-    type: Sequelize.DataTypes.DATEONLY
+  description: {
+    type: Sequelize.TEXT
   },
-  price: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    validate: {
-      isNumeric: true
-    }
-  },
+  // releasedDate: { <=== check
+  //   type: Sequelize.DataTypes.DATEONLY
+  // },
+  // price: { <=== check
+  //   type: Sequelize.INTEGER,
+  //   allowNull: false,
+  //   validate: {
+  //     notEmpty: true
+  //   }
+  // },
   rating: {
     type: Sequelize.INTEGER,
     allowNull: true,
@@ -50,4 +54,4 @@ const Beats = db.define('beats', {
   }
 })
 
-module.exports = Beats
+module.exports = Beat

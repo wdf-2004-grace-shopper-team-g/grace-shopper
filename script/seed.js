@@ -1,9 +1,9 @@
 'use strict'
 const db = require('../server/db')
 const {User} = require('../server/db/models')
-const {Beats} = require('../server/db/models')
+const {Beat} = require('../server/db/models')
 const faker = require('faker')
-var randomEmail = faker.internet.email()
+
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -17,7 +17,7 @@ async function seed() {
       address: '1200 Broadway NY NY 10038'
     }),
     User.create({
-      email: randomEmail,
+      email: faker.internet.email(),
       password: '123',
       firstName: 'Murphy',
       lastName: 'Santos',
@@ -50,16 +50,26 @@ async function seed() {
     })
   ])
   const beats = await Promise.all([
-    Beats.create({title: 'hotfire', price: 1000, rating: 4}),
-    Beats.create({title: 'Summer2020', price: 1000000, rating: 5}),
-    Beats.create({title: 'hotfire', price: 1000, rating: 4}),
-    Beats.create({title: 'Summer2020', price: 1000000, rating: 5}),
-    Beats.create({title: 'Luis Miguel', price: 99, rating: 5}),
-    Beats.create({title: 'Hector Lavoe', price: 75, rating: 5}),
-    Beats.create({title: 'Cesar Chavez', price: 50, rating: 4})
+    Beat.create({title: 'hotfire', author: 'Bob', price: 1000, rating: 4}),
+    Beat.create({
+      title: 'Summer2020',
+      author: 'Lui',
+      price: 1000000,
+      rating: 5
+    }),
+    Beat.create({title: 'hotfire', author: 'John', price: 1000, rating: 4}),
+    Beat.create({
+      title: 'Summer2020',
+      author: 'Criag',
+      price: 1000000,
+      rating: 5
+    }),
+    Beat.create({title: 'Luis Miguel', author: 'Osee', price: 99, rating: 5}),
+    Beat.create({title: 'Hector Lavoe', author: 'Foun', price: 75, rating: 5}),
+    Beat.create({title: 'Cesar Chavez', author: 'Oros', price: 50, rating: 4})
   ])
   console.log(`seeded ${users.length} users`)
-  console.log(`seeded ${beats.length} Beats`)
+  console.log(`seeded ${beats.length} Beat`)
   console.log(`seeded successfully`)
 }
 async function runSeed() {

@@ -1,5 +1,5 @@
 const User = require('./user')
-const Beats = require('./beats')
+const Beat = require('./beats')
 const Order = require('./order')
 const Cart = require('./cart')
 const CartItem = require('./cart-item')
@@ -11,10 +11,10 @@ Order.belongsTo(User)
 User.hasOne(Cart)
 Cart.belongsTo(User)
 
-Cart.belongsToMany(Beats, {through: CartItem})
-Beats.belongsToMany(Cart, {through: CartItem})
+Cart.belongsToMany(Beat, {through: CartItem})
+Beat.belongsToMany(Cart, {through: CartItem})
 
-Order.belongsToMany(Beats, {through: OrderItem})
+Order.belongsToMany(Beat, {through: OrderItem})
 
 /**
  *
@@ -30,6 +30,6 @@ Order.belongsToMany(Beats, {through: OrderItem})
  */
 module.exports = {
   User,
-  Beats,
+  Beat,
   Order
 }
