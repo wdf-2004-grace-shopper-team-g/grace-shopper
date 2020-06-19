@@ -72,7 +72,6 @@ async function seed() {
   console.log(`seeded ${beats.length} Beat`)
   console.log(`seeded successfully`)
 }
-
 async function runSeed() {
   console.log('seeding...')
   try {
@@ -86,7 +85,6 @@ async function runSeed() {
     console.log('db connection closed')
   }
 }
-
 // Execute the `seed` function, IF we ran this module directly (`node seed`).
 // `Async` functions always return a promise, so we can use `catch` to handle
 // any errors that might occur inside of `seed`.

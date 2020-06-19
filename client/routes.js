@@ -3,6 +3,9 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
+import SingleBeat from './components/SingleBeat'
+import AllBeats from './components/AllBeats'
+
 import {me} from './store'
 
 /**
@@ -10,6 +13,7 @@ import {me} from './store'
  */
 class Routes extends Component {
   componentDidMount() {
+    // console.log('this is props', this.props)
     this.props.loadInitialData()
   }
 
@@ -19,8 +23,12 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+
+        <Route path="/beats/:id" component={SingleBeat} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/beats/" component={AllBeats} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -47,8 +55,9 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    loadInitialData() {
-      dispatch(me())
+    async loadInitialData() {
+      await dispatch(me())
+      //  await dispatch(getSingleBeat())
     }
   }
 }
