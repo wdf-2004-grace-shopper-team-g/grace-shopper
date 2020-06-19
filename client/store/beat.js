@@ -29,7 +29,6 @@ const fetchAllBeats = beats => ({type: GET_ALLBEATS, beats})
 export const getSingleBeat = id => async dispatch => {
   try {
     const res = await axios.get(`/api/beats/${id}`)
-    // console.log('this is res', res)
     dispatch(fetchSingleBeat(res.data))
   } catch (err) {
     console.error(err)
@@ -40,7 +39,6 @@ export const getSingleBeat = id => async dispatch => {
 export const getAllBeats = () => async dispatch => {
   try {
     const res = await axios.get(`/api/beats/`)
-    // console.log('this is res', res)
     dispatch(fetchAllBeats(res.data))
   } catch (err) {
     console.error(err)
@@ -52,7 +50,6 @@ export const getAllBeats = () => async dispatch => {
  * REDUCER
  */
 export default function(state = initialState, action) {
-  // console.log('this is action', action)
   switch (action.type) {
     case GET_SINGLEBEAT:
       return {...state, beat: action.beat}

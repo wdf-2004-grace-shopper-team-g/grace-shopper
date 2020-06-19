@@ -7,7 +7,6 @@ import SingleBeat from './components/SingleBeat'
 import AllBeats from './components/AllBeats'
 
 import {me} from './store'
-import getSingleBeat from './store/beat'
 
 /**
  * COMPONENT
