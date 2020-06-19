@@ -9,6 +9,9 @@ const Beats = db.define('beats', {
   author: {
     type: Sequelize.STRING
   },
+  description: {
+    type: Sequelize.TEXT
+  },
   releasedDate: {
     type: Sequelize.DataTypes.DATEONLY
   },
