@@ -19,3 +19,60 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+/* CART  */
+
+.paper {
+  padding: 5px;
+  max-width: 500;
+}
+
+.root {
+  flex-grow: 1;
+}
+
+.image-prev {
+  width: 128px;
+  height: 128px;
+}
+
+.img-def {
+  margin: auto;
+  display: block;
+  max-width: 100%;
+}
+
+/* UTILIES */
+
+.padding-horizontal {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.btn-lowerCase {
+  text-transform: none !important;
+}
+
+/*
+TO DO:
+  - pull from master and merge changes locally & make a pull request
+  - finish the cart & connect to beats *add& del beat
+  - fix registration user
+
+audioUrl: "http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3"
+author: null
+createdAt: "2020-06-19T20:53:16.020Z"
+description: null
+genre: "Hip-hop"
+id: 1
+imgUrl: "http://www.droid-life.com/wp-content/uploads/2014/05/beats-logo.jpg"
+orderItem: {id: 1, quantity: 1, createdAt: "2020-06-19T20:53:16.060Z", updatedAt: "2020-06-19T20:53:16.060Z", orderId: 1, …}
+price: 1000
+rating: 4
+releasedDate: null
+title: "hotfire"
+
+Qty:1   Delete  save for later
+
+Compare with similar beats
+*/

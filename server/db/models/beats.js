@@ -13,16 +13,16 @@ const Beat = db.define('beats', {
   description: {
     type: Sequelize.TEXT
   },
-  // releasedDate: { <=== check
-  //   type: Sequelize.DataTypes.DATEONLY
-  // },
-  // price: { <=== check
-  //   type: Sequelize.INTEGER,
-  //   allowNull: false,
-  //   validate: {
-  //     notEmpty: true
-  //   }
-  // },
+  releasedDate: {
+    type: Sequelize.DataTypes.DATEONLY
+  },
+  price: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   rating: {
     type: Sequelize.INTEGER,
     allowNull: true,
