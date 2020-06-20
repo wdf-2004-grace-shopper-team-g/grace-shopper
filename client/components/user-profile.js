@@ -21,19 +21,6 @@ class UserProfile extends React.Component {
 
   render() {
     const user = this.props.user
-
-    /*
-    address: "1200 Broadway NY NY 10038"
-createdAt: "2020-06-19T17:54:11.265Z"
-email: "murphy@email.com"
-firstName: "Murphy"
-googleId: null
-id: 1
-imgUrl: "http://www.droid-life.com/wp-content/uploads/2014/05/beats-logo.jpg"
-lastName: "Santos"
-updatedAt: "2020-06-19T17:54:11.265Z"
-userType: "admin"
-    */
     return (
       <div>
         <h2>User Info</h2>

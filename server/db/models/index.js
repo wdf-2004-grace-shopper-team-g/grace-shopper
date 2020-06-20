@@ -8,13 +8,14 @@ const OrderItem = require('./order-item')
 User.hasMany(Order)
 Order.belongsTo(User)
 
-User.hasOne(Cart)
-Cart.belongsTo(User)
+// User.hasOne(Cart)
+// Cart.belongsTo(User)
 
-Cart.belongsToMany(Beats, {through: CartItem})
-Beats.belongsToMany(Cart, {through: CartItem})
+// Cart.belongsToMany(Beats, {through: CartItem})
+// Beats.belongsToMany(Cart, {through: CartItem})
 
 Order.belongsToMany(Beats, {through: OrderItem})
+Beats.belongsToMany(Order, {through: OrderItem})
 
 /**
  *
