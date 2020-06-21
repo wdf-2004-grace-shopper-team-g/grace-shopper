@@ -20,7 +20,7 @@ class Navbar extends React.Component {
     console.log('OUTPUT: Navbar -> render -> user', user)
     return (
       <div>
-        <h1>Beat Heat Store</h1>
+        <h1 align="center">Beat Heat Store</h1>
         <nav>
           {isAdmin ? (
             <div>
