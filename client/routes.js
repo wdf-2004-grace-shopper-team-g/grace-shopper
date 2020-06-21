@@ -4,6 +4,8 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import SingleBeat from './components/SingleBeat'
 import AllBeats from './components/AllBeats'
+import {AdminUsers} from './components/admin-users.js'
+import {AdminPage} from './components/AdminPage'
 import {Login, Signup, UserHome, UserProfile, Cart} from './components'
 import {me} from './store'
 
@@ -17,7 +19,7 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const {isLoggedIn, isAdmin} = this.props
 
     return (
       <Switch>
@@ -33,7 +35,14 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/profile" component={UserProfile} />
+            <Route exact path="/users" component={UserProfile} />
             <Route exact path="/cart" component={Cart} />
+            {isAdmin && (
+              <Switch>
+                <Route exact path="/admin" component={AdminPage} />
+                <Route exact path="/admin/users" component={AdminUsers} />
+              </Switch>
+            )}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -50,7 +59,8 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: !!state.user.isAdmin
   }
 }
 
@@ -72,5 +82,6 @@ export default withRouter(connect(mapState, mapDispatch)(Routes))
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired
 }
