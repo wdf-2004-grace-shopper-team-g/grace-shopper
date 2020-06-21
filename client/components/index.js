@@ -5,6 +5,7 @@
  */
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
+export {default as AllUsers} from './AllUsers'
 export {default as SingleBeat} from './SingleBeat'
 export {default as AllBeats} from './AllBeats'
 export {Login, Signup} from './auth-form'

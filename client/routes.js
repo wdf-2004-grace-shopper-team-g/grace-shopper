@@ -4,8 +4,16 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import SingleBeat from './components/SingleBeat'
 import AllBeats from './components/AllBeats'
-import {Login, Signup, UserHome, UserProfile, Cart} from './components'
+import {
+  Login,
+  Signup,
+  UserHome,
+  UserProfile,
+  Cart,
+  AllUsers
+} from './components'
 import {me} from './store'
+// import { } from './components/AllUsers'
 
 /**
  * COMPONENT
@@ -17,7 +25,7 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const {isLoggedIn, isAdmin} = this.props
 
     return (
       <Switch>
@@ -27,7 +35,15 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/beats/" component={AllBeats} />
-
+        {isAdmin && (
+          <Switch>
+            {/* Routes placed here are only available after logging in */}
+            <Route exact path="/home" component={UserHome} />
+            <Route exact path="/profile" component={UserProfile} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/users" component={AllUsers} />
+          </Switch>
+        )}
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -50,7 +66,8 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: !!state.user.isAdmin
   }
 }
 
@@ -72,5 +89,6 @@ export default withRouter(connect(mapState, mapDispatch)(Routes))
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired
 }

@@ -14,7 +14,8 @@ async function seed() {
       firstName: 'Murphy',
       lastName: 'Santos',
       userType: 'admin',
-      address: '1200 Broadway NY NY 10038'
+      address: '1200 Broadway NY NY 10038',
+      isAdmin: true
     },
     {
       email: 'Luis@email.com',

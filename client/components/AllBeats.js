@@ -9,6 +9,7 @@ import {getAllBeats} from '../store/beat'
 
 export class AllBeats extends React.Component {
   async componentDidMount() {
+    // console.log('this is props', this.props)
     await this.props.getAllBeats()
   }
 
@@ -43,7 +44,7 @@ export class AllBeats extends React.Component {
 }
 
 const mapState = state => {
-  console.log('this is state', state)
+  // console.log('this is state', state)
   return {
     beats: state.beat
   }
