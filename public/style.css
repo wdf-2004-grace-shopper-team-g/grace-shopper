@@ -53,6 +53,20 @@ form div {
   text-transform: none !important;
 }
 
+/* LOGGED USER NAVBAR */
+
+.white-link,
+.white-link:link,
+.white-link:visited {
+  text-decoration: inherit !important;
+  color: white;
+  margin: 0 0.7rem;
+}
+
+.toolbarRight {
+  margin-left: auto;
+}
+
 /*
 TO DO:
   - pull from master and merge changes locally & make a pull request
