@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link as RouterLink} from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import {
   Grid,
@@ -8,36 +9,60 @@ import {
   Typography,
   ButtonBase,
   Button,
-  ButtonGroup
+  ButtonGroup,
+  Box
 } from '@material-ui/core'
-import {fetchCart} from '../store/cart'
+import {fetchCart, removeBeat} from '../store/cart'
 
 class Cart extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      userId: ''
+    }
+    this.getPrice = this.getPrice.bind(this)
   }
 
-  componentDidMount() {
-    const user = this.props.user
+  getPrice = priceInPennies => {
+    let dollars = Number(priceInPennies) / 100
+    dollars = dollars.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    })
+    return dollars
+  }
+
+  removeBeat(beatId) {
+    this.props.removeBeat(this.state.userId, beatId)
+  }
+
+  async componentDidMount() {
+    const user = await this.props.user
+    this.setState({userId: user.id})
     this.props.fetchCart(user.id)
   }
   render() {
-    const getPrice = priceInPennies => {
-      let dollars = Number(priceInPennies) / 100
-      dollars = dollars.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD'
-      })
-      return dollars
-    }
     const cartInfo = this.props.cart
     return (
       <Container>
         <h2>Cart</h2>
-        {cartInfo ? (
+        {cartInfo.beats ? (
           <div>
-            <p>Total Price: {cartInfo.totalPrice}</p>
+            <Box className="cart-header">
+              <Typography variant="h6">
+                Total Price:{' '}
+                {cartInfo.totalPrice ? this.getPrice(cartInfo.totalPrice) : 0}
+              </Typography>
+              <Button
+                className="white-link"
+                color="secondary"
+                component={RouterLink}
+                to="/start-selling"
+                variant="contained"
+              >
+                Proceed to checkout
+              </Button>
+            </Box>
             {cartInfo.beats
               ? cartInfo.beats.map(beat => {
                   return (
@@ -98,7 +123,13 @@ class Cart extends React.Component {
                                     <Button className="btn-lowerCase">
                                       Quantity: 1
                                     </Button>
-                                    <Button className="btn-lowerCase">
+                                    <Button
+                                      className="btn-lowerCase"
+                                      onClick={this.removeBeat.bind(
+                                        this,
+                                        beat.id
+                                      )}
+                                    >
                                       Remove
                                     </Button>
                                     <Button className="btn-lowerCase">
@@ -109,7 +140,7 @@ class Cart extends React.Component {
                               </Grid>
                               <Grid item>
                                 <Typography variant="subtitle1">
-                                  {getPrice(beat.price)}
+                                  {this.getPrice(beat.price)}
                                 </Typography>
                               </Grid>
                             </Grid>
@@ -132,13 +163,14 @@ class Cart extends React.Component {
 const mapState = state => {
   return {
     user: state.user,
-    cart: state.cart
+    cart: state.cart.cart
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    fetchCart: userId => dispatch(fetchCart(userId))
+    fetchCart: userId => dispatch(fetchCart(userId)),
+    removeBeat: (userId, beatId) => dispatch(removeBeat(userId, beatId))
   }
 }
 
