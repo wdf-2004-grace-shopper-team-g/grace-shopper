@@ -88,7 +88,7 @@ router.post('/:userId', async (req, res, next) => {
       return created
     })
     if (created) {
-      res.json('Cart was succescully created!!')
+      res.json('Cart was succesfully created!!')
     }
   } catch (err) {
     console.log(`ERROR! => ${err.name}: ${err.message}`)
@@ -100,16 +100,57 @@ router.post('/:userId', async (req, res, next) => {
 // to avoid dup have a condition=> if(beatId in order) { return 'Already added to cart' }
 //  else order.addBeat(beatId)
 router.put('/:userId', async (req, res, next) => {
-  const beatId = req.body.beatId
+  const {id, type} = req.body
   try {
     const order = await Order.findOne({
       where: {
         id: req.params.userId,
-        completed: false
+        status: 'Created'
       }
     })
-    let t = await order.addBeat(beatId)
-    res.send(t)
+
+    if (type === 'removed') {
+      let removed = await order.removeBeat(id)
+      let numbOfBeats = await order.countBeats()
+      if (removed) {
+        res.send({
+          message: 'Removed Successfully',
+          numbOfBeats: numbOfBeats
+        })
+      } else {
+        res.send('Failed or not founded!')
+      }
+    } else {
+      let added = await order.addBeat(id)
+      let numbOfBeats = await order.countBeats()
+      if (added) {
+        res.send({
+          message: 'Added Successfully',
+          numbOfBeats: numbOfBeats
+        })
+      } else {
+        res.send('Already added!')
+      }
+    }
+    // returns numbersOfBeat in the order
+
+    //  let added = await order.addBeat(1)
+
+    // let message = "Failed!"
+    // if(type === "remove") {
+    //   await  order.removeBeat(id);
+    //   message= `Beat with id ${id} was succesfully removed!!`
+    // }
+    // else {
+    //   console.log("OUTPUT: res**************")
+    //   let res = await order.addBeat(id)
+
+    //   console.log("OUTPUT: order", order.__proto__)
+    //   if(res) {
+    //     message =`Beat with id ${id} was succesfully added!!`
+    //   }
+    // }
+    // res.send(message)
   } catch (error) {
     next(error)
   }
