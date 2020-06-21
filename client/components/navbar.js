@@ -3,40 +3,83 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined'
+import LoggedUserNavbar from './loggedUserNavbar'
+import {fetchCart} from '../store/cart'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>Beat Heat Store</h1>
+class Navbar extends React.Component {
+  // async componentDidMount() {
+  //   const user = await this.props.user
+  //   const t = await this.props.fetchCart(user.id)
+  //   console.log("OUTPUT: Navbar -> componentDidMount -> t", t)
+  // }
+  render() {
+    const {handleClick, isLoggedIn, cart, user} = this.props
+    console.log('OUTPUT: Navbar -> render -> user', user)
+    return (
+      <div>
+        <h1>Beat Heat Store</h1>
+        <nav>
+          {isLoggedIn ? (
+            <div>
+              {/* The navbar will show these links after you log in */}
+              <LoggedUserNavbar logout={handleClick} cart={cart} />
+            </div>
+          ) : (
+            <div>
+              {/* The navbar will show these links before you log in */}
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Sign Up</Link>
+            </div>
+          )}
+        </nav>
+        <hr />
+      </div>
+    )
+  }
+}
 
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-          <Link to="/cart">Cart</Link>
-          <Link to="/profile">Profile</Link>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
+/*
+- CREATE A REDUCER
+guest
+add to my cart 2 beats
+if(user)  {
+  do the fetchCart(userId)
+}
+
+*/
+// const Navbar = ({handleClick, isLoggedIn, cart}) => (
+//   <div>
+//     <h1>Beat Heat Store</h1>
+
+//     <nav>
+//       {isLoggedIn ? (
+
+//        <div>
+//          {/* The navbar will show these links after you log in */}
+//           <LoggedUserNavbar logout={handleClick} cart={cart}/>
+//        </div>
+//       ) : (
+//         <div>
+//           {/* The navbar will show these links before you log in */}
+//           <Link to="/login">Login</Link>
+//           <Link to="/signup">Sign Up</Link>
+//         </div>
+//       )}
+//     </nav>
+//     <hr />
+//   </div>
+
+// )
 
 /**
  * CONTAINER
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    cart: state.cart,
+    user: state.user
   }
 }
 
@@ -44,6 +87,9 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout())
+    },
+    fetchCart(userId) {
+      dispatch(fetchCart(userId))
     }
   }
 }
