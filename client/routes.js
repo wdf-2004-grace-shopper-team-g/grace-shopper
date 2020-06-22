@@ -12,6 +12,7 @@ import {
   Cart,
   AllUsers,
   GuestHome,
+  About,
   Player
 } from './components'
 import {me} from './store'
@@ -40,6 +41,7 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/beats/" component={AllBeats} />
         <Route exact path="/cart" component={Cart} />
+        <Route exact path="/about" component={About} />
         {isAdmin && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

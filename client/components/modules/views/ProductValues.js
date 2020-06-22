@@ -53,7 +53,7 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues1.svg"
+                src="https://ca.slack-edge.com/T024FPYBQ-UV0NU1W10-61f181732755-512"
                 alt="suitcase"
               />
               <Typography variant="h6" className={classes.title}>
@@ -69,7 +69,7 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues2.svg"
+                src="https://ca.slack-edge.com/T024FPYBQ-U0101NSL2UW-8f556fd57c87-512"
                 alt="graph"
               />
               <Typography variant="h6" className={classes.title}>
@@ -85,7 +85,7 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues3.svg"
+                src="https://ca.slack-edge.com/T024FPYBQ-U0101NS6VM4-2f1ddee1c80c-512"
                 alt="clock"
               />
               <Typography variant="h6" className={classes.title}>
