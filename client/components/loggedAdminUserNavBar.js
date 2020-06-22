@@ -35,7 +35,7 @@ const loggedAdminUserNavbar = ({logout, cart}) => {
               Logout
             </a>
             <Button
-              className="white-link"
+              className="white-link "
               color="secondary"
               component={RouterLink}
               to="/start-selling"

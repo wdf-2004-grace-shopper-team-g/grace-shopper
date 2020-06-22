@@ -45,7 +45,6 @@ export class SingleBeat extends React.Component {
 }
 
 const mapState = state => {
-  console.log('this is state', state)
   return {
     beat: state.beat
   }
