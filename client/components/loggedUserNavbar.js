@@ -13,7 +13,7 @@ import PersonIcon from '@material-ui/icons/Person'
 
 const loggedUserNavbar = ({logout, cart}) => {
   return (
-    <AppBar className="primary-color" position="static">
+    <AppBar className="primary-color" position="fixed">
       <Container>
         <Toolbar disableGutters className="toolbar">
           <Link className="white-link" component={RouterLink} to="/home">
@@ -49,7 +49,11 @@ const loggedUserNavbar = ({logout, cart}) => {
               </Link>
             </Badge>
 
-            <Badge badgeContent={2} color="secondary" className="xm-1">
+            <Badge
+              badgeContent={cart.totalBeats}
+              color="secondary"
+              className="xm-1"
+            >
               <Link className="white-link" component={RouterLink} to="/cart">
                 <ShoppingCartOutlinedIcon fontSize="large" />
               </Link>

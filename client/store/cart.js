@@ -11,7 +11,8 @@ const REMOVE_CART = 'REMOVE_CART'
 
 const defaultCart = {
   cart: {},
-  isRemoved: {}
+  isRemoved: {},
+  totalBeats: 0
 }
 
 const getCart = cart => ({type: GET_CART, cart})
@@ -45,11 +46,6 @@ export const addBeatToCart = (userId, beatId) => {
   }
 }
 
-// to add a beat
-// if(data.message) {
-//   call fetchCart
-// }
-
 export default function(state = defaultCart, action) {
   switch (action.type) {
     case GET_CART:
@@ -57,7 +53,11 @@ export default function(state = defaultCart, action) {
       action.cart.beats.map(beat => {
         total += beat.price
       })
-      return {...state, cart: {...action.cart, totalPrice: total}}
+      return {
+        ...state,
+        cart: {...action.cart, totalPrice: total},
+        totalBeats: action.cart.beats.length
+      }
     case REMOVE_BEAT_BY_ID:
       return {
         ...state,
