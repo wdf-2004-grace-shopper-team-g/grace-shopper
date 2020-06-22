@@ -17,8 +17,7 @@ const loggedUserNavbar = ({logout, cart}) => {
       <Container>
         <Toolbar disableGutters className="toolbar">
           <Link className="white-link" component={RouterLink} to="/home">
-            {/* <img src={Logo} className="logo" alt="Logo" /> */}
-            LOGO
+            <img src="/favicon.ico" className="logo" alt="Logo" />
           </Link>
 
           <div className="hiddenDesk">
