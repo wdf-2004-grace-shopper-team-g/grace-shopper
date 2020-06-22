@@ -30,3 +30,18 @@ router.get('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    if (req.user.isAdmin) {
+      if (req.body) {
+        const experience = await Beat.create(req.body)
+        res.status(201).json(experience)
+      } else {
+        res.status(404).send('Beat Upload unsuccessful')
+      }
+    }
+  } catch (error) {
+    next(error)
+  }
+})

@@ -36,6 +36,7 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/home" component={GuestHome} />
+        <Route exact path="/" component={GuestHome} />
         <Route path="/beats/:id" component={SingleBeat} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
@@ -46,6 +47,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={UserHome} />
+            <Route exact path="/" component={UserHome} />
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/users" component={AllUsers} />
@@ -55,6 +57,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={UserHome} />
+            <Route exact path="/" component={UserHome} />
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/cart" component={Cart} />
           </Switch>

@@ -6,7 +6,7 @@ import {Button} from '@material-ui/core'
 import {addBeatToCart} from '../store/cart'
 
 import {ToastContainer, toast} from 'react-toastify'
-// import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 import ProductCategories from './modules/views/ProductCategories'
 import ProductSmokingHero from './modules/views/ProductSmokingHero'
