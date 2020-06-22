@@ -20,6 +20,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: [
+          {loader: 'style-loader', options: {injectType: 'styleTag'}},
+          'css-loader'
+        ]
+      },
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'

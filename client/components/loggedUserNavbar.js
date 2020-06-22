@@ -17,6 +17,9 @@ const loggedUserNavbar = ({logout, cart}) => {
       <Container>
         <Toolbar disableGutters className="toolbar">
           <Link className="white-link" component={RouterLink} to="/home">
+
+            <img src="/favicon.ico" className="logo" alt="Logo" />
+
             <img
               src="https://duckduckgo.com/i/7f3d4ac9.png"
               height="25px"
@@ -24,6 +27,7 @@ const loggedUserNavbar = ({logout, cart}) => {
               className="logo"
               alt="Logo"
             />
+
           </Link>
 
           <div className="hiddenDesk">
