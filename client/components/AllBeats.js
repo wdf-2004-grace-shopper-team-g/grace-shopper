@@ -5,6 +5,9 @@ import {getAllBeats} from '../store/beat'
 import {Button} from '@material-ui/core'
 import {addBeatToCart} from '../store/cart'
 
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import ProductCategories from './modules/views/ProductCategories'
 import ProductSmokingHero from './modules/views/ProductSmokingHero'
 import AppFooter from './modules/views/AppFooter'
@@ -35,6 +38,7 @@ export class AllBeats extends React.Component {
 
   addBeat(beatId) {
     this.props.addBeatToCart(this.state.userId, beatId)
+    toast.success('🚀  Added Successfully!')
   }
 
   render() {
@@ -51,6 +55,7 @@ export class AllBeats extends React.Component {
           <AppFooter />
 
           <h3>Browse Beats</h3>
+          <ToastContainer />
           {beats ? (
             <ul>
               {beats.map(beat => (
