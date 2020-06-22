@@ -38,9 +38,7 @@ const mapState = state => {
   }
 }
 const mapDispatch = dispatch => {
-  return {
-    // getProject: (projectId) => dispatch(fetchProject(projectId)),
-  }
+  return {}
 }
 
 export default connect(mapState, mapDispatch)(UserProfile)

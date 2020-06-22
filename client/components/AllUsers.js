@@ -9,13 +9,11 @@ import {getAllUsers} from '../store/user'
 
 export class AllUsers extends React.Component {
   async componentDidMount() {
-    // console.log('this is props', this.props)
     await this.props.getAllUsers()
   }
 
   render() {
     let users = this.props.users
-    console.log('USERS***++++', users)
 
     return (
       <div>

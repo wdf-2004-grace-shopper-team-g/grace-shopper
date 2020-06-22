@@ -58,7 +58,7 @@ export class AllBeats extends React.Component {
                     <h2> {beat.title} </h2>
                   </Link>
                   <img src={beat.imgUrl} height="400" width="600" />
-
+                  <br />
                   <Button
                     onClick={this.addBeat.bind(this, beat.id)}
                     className="white-link "

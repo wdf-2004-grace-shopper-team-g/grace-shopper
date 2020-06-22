@@ -40,39 +40,6 @@ class Navbar extends React.Component {
   }
 }
 
-/*
-- CREATE A REDUCER
-guest
-add to my cart 2 beats
-if(user)  {
-  do the fetchCart(userId)
-}
-
-*/
-// const Navbar = ({handleClick, isLoggedIn, cart}) => (
-//   <div>
-//     <h1>Beat Heat Store</h1>
-
-//     <nav>
-//       {isLoggedIn ? (
-
-//        <div>
-//          {/* The navbar will show these links after you log in */}
-//           <LoggedUserNavbar logout={handleClick} cart={cart}/>
-//        </div>
-//       ) : (
-//         <div>
-//           {/* The navbar will show these links before you log in */}
-//           <Link to="/login">Login</Link>
-//           <Link to="/signup">Sign Up</Link>
-//         </div>
-//       )}
-//     </nav>
-//     <hr />
-//   </div>
-
-// )
-
 /**
  * CONTAINER
  */

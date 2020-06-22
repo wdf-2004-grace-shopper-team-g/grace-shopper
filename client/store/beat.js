@@ -7,8 +7,6 @@ import history from '../history'
 const GET_ALLBEATS = 'GET_ALLBEATS'
 const GET_SINGLEBEAT = 'GET_SINGLEBEAT'
 
-// const REMOVE_BEAT = 'REMOVE_BEAT'
-
 /**
  * INITIAL STATE
  */
@@ -33,7 +31,6 @@ export const getSingleBeat = id => async dispatch => {
   } catch (err) {
     console.error(err)
   }
-  console.log('Hey I am here!')
 }
 
 export const getAllBeats = () => async dispatch => {
@@ -43,7 +40,6 @@ export const getAllBeats = () => async dispatch => {
   } catch (err) {
     console.error(err)
   }
-  console.log('Hey I am here 2!')
 }
 
 /**

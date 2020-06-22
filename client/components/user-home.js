@@ -10,7 +10,7 @@ import AllBeats from './AllBeats'
  * COMPONENT
  */
 export const UserHome = props => {
-  const {email, isAdmin, isLoggedIn} = props
+  const {email, isAdmin} = props
 
   return (
     <div>

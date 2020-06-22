@@ -80,7 +80,6 @@ const mapDispatch = dispatch => {
   return {
     async loadInitialData() {
       await dispatch(me())
-      //  await dispatch(getSingleBeat())
     }
   }
 }
