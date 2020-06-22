@@ -12,7 +12,6 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined'
 import PersonIcon from '@material-ui/icons/Person'
 
 const GuestUserNavbar = ({logout, cart}) => {
-  console.log('OUTPUT: loggedAdminUserNavbar -> cart', cart)
   return (
     <AppBar className="primary-color" position="static">
       <Container>
