@@ -6,7 +6,7 @@ import {Button} from '@material-ui/core'
 import {addBeatToCart} from '../store/cart'
 
 import {ToastContainer, toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+// import 'react-toastify/dist/ReactToastify.css'
 
 import ProductCategories from './modules/views/ProductCategories'
 import ProductSmokingHero from './modules/views/ProductSmokingHero'
@@ -47,18 +47,8 @@ export class AllBeats extends React.Component {
     return (
       <div>
         <React.Fragment>
-
-          {/* <ProductHero />
-          <ProductValues /> */}
-          {/* <ProductCategories />
-      <ProductHowItWorks />
-      <ProductCTA />
-      <ProductSmokingHero /> */}
           <h1 align="center">Browse Beats</h1>
           <ToastContainer />
-          {beats ? (
-
-          <h1 align="center">Browse Beats</h1>
           {isAdmin ? (
             <div>
               <div align="center">
@@ -107,7 +97,6 @@ export class AllBeats extends React.Component {
               </ul>
             </div>
           ) : beats ? (
-
             <ul>
               {beats.map(beat => (
                 <li key={beat.id}>
