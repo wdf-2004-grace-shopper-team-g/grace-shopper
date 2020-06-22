@@ -42,15 +42,14 @@ export class AllBeats extends React.Component {
     return (
       <div>
         <React.Fragment>
-          <ProductHero />
-          <ProductValues />
+          {/* <ProductHero />
+          <ProductValues /> */}
           {/* <ProductCategories />
       <ProductHowItWorks />
       <ProductCTA />
       <ProductSmokingHero /> */}
-          <AppFooter />
 
-          <h3>Browse Beats</h3>
+          <h1 align="center">Browse Beats</h1>
           {beats ? (
             <ul>
               {beats.map(beat => (
@@ -80,6 +79,7 @@ export class AllBeats extends React.Component {
             <h2>Loading...</h2>
           )}
         </React.Fragment>
+        <AppFooter />
       </div>
     )
   }

@@ -10,9 +10,12 @@ import {
   UserHome,
   UserProfile,
   Cart,
-  AllUsers
+  AllUsers,
+  GuestHome,
+  Player
 } from './components'
 import {me} from './store'
+
 // import { } from './components/AllUsers'
 
 /**
@@ -28,13 +31,15 @@ class Routes extends Component {
     const {isLoggedIn, isAdmin} = this.props
 
     return (
+      // <Player prev={prev} next={next} toggle={toggle} isPlaying={isPlaying} />
       <Switch>
         {/* Routes placed here are available to all visitors */}
-
+        <Route exact path="/home" component={GuestHome} />
         <Route path="/beats/:id" component={SingleBeat} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/beats/" component={AllBeats} />
+        <Route exact path="/cart" component={Cart} />
         {isAdmin && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

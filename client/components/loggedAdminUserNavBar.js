@@ -23,7 +23,7 @@ const loggedAdminUserNavbar = ({logout, cart}) => {
 
           <div className="hiddenDesk">
             <Link className="white-link" component={RouterLink} to="/users">
-              View All Users
+              Users
             </Link>
             <Link className="white-link" component={RouterLink} to="/beats">
               Beats
