@@ -1,12 +1,7 @@
 import axios from 'axios'
-import history from '../history'
 
-/**
- * ACTION TYPES
- */
 const GET_CART = 'GET_CART'
 const REMOVE_BEAT_IN_CART = 'REMOVE_BEAT_IN_CART'
-const REMOVE_BEAT_BY_ID = 'REMOVE_BEAT_BY_ID'
 const REMOVE_CART = 'REMOVE_CART'
 
 const defaultCart = {
@@ -16,7 +11,6 @@ const defaultCart = {
 }
 
 const getCart = cart => ({type: GET_CART, cart})
-const removeBeatById = beatToRemove => ({type: REMOVE_BEAT_BY_ID, beatToRemove})
 const getRemoveBeat = isRemoved => ({type: REMOVE_BEAT_IN_CART, isRemoved})
 
 export const fetchCart = userId => {
@@ -57,14 +51,6 @@ export default function(state = defaultCart, action) {
         ...state,
         cart: {...action.cart, totalPrice: total},
         totalBeats: action.cart.beats.length
-      }
-    case REMOVE_BEAT_BY_ID:
-      return {
-        ...state,
-        cart: {
-          ...state,
-          ...state.cart.beats.filter(beat => beat.id != action.beatToRemove)
-        }
       }
     case REMOVE_BEAT_IN_CART:
       return {...state, isRemoved: action.removeBeat}
