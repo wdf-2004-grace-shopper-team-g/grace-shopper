@@ -35,6 +35,16 @@ export const removeBeat = (userId, beatId) => {
   }
 }
 
+export const addBeatToCart = (userId, beatId) => {
+  const targetObj = {id: beatId, type: 'add'}
+  return async dispatch => {
+    const {data} = await axios.put(`/api/orders/${userId}`, targetObj)
+    if (data.message) {
+      dispatch(fetchCart(userId))
+    }
+  }
+}
+
 // to add a beat
 // if(data.message) {
 //   call fetchCart

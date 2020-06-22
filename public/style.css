@@ -59,6 +59,10 @@ form div {
   text-transform: none !important;
 }
 
+.btn-ternery {
+  background-color: #0061f2 !important;
+}
+
 /* LOGGED USER NAVBAR */
 
 .white-link,

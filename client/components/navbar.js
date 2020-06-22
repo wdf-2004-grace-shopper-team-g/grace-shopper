@@ -10,14 +10,9 @@ import GuestUserNavbar from './GuestUserNavbar'
 import {fetchCart} from '../store/cart'
 
 class Navbar extends React.Component {
-  // async componentDidMount() {
-  //   const user = await this.props.user
-  //   const t = await this.props.fetchCart(user.id)
-  //   console.log("OUTPUT: Navbar -> componentDidMount -> t", t)
-  // }
   render() {
     const {handleClick, isLoggedIn, isAdmin, cart, user} = this.props
-    console.log('OUTPUT: Navbar -> render -> user', user)
+
     return (
       <div>
         <h1 align="center">Beat Heat Store</h1>
