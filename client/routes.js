@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import SingleBeat from './components/SingleBeat'
+import SingleUser from './components/SingleUser'
+
 import AllBeats from './components/AllBeats'
 import {
   Login,
@@ -13,9 +15,12 @@ import {
   AllUsers,
   GuestHome,
   Player,
-  Checkout
+  Checkout,
+  About,
+  Player
 } from './components'
 import {me} from './store'
+import {AddBeat} from './components/AddBeat'
 
 // import { } from './components/AllUsers'
 
@@ -36,24 +41,30 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/home" component={GuestHome} />
+        <Route exact path="/" component={GuestHome} />
         <Route path="/beats/:id" component={SingleBeat} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/beats/" component={AllBeats} />
         <Route exact path="/cart" component={Cart} />
+        <Route exact path="/about" component={About} />
         {isAdmin && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={UserHome} />
+            <Route exact path="/" component={UserHome} />
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/users" component={AllUsers} />
+            <Route path="/users/:id" component={SingleUser} />
+            <Route path="/add" component={AddBeat} />
           </Switch>
         )}
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={UserHome} />
+            <Route exact path="/" component={UserHome} />
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />

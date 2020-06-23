@@ -17,8 +17,13 @@ const loggedAdminUserNavbar = ({logout, cart}) => {
       <Container>
         <Toolbar disableGutters className="toolbar">
           <Link className="white-link" component={RouterLink} to="/home">
-            {/* <img src={Logo} className="logo" alt="Logo" /> */}
-            LOGO
+            <img
+              src="https://duckduckgo.com/i/7f3d4ac9.png"
+              height="25px"
+              width="25px"
+              className="logo"
+              alt="Logo"
+            />
           </Link>
 
           <div className="hiddenDesk">

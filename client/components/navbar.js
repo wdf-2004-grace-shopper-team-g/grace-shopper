@@ -15,7 +15,6 @@ class Navbar extends React.Component {
 
     return (
       <div>
-        <h1 align="center">Beat Heat Store</h1>
         <nav>
           {isAdmin ? (
             <div>

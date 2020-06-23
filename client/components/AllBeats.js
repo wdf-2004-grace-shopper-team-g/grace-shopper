@@ -42,19 +42,61 @@ export class AllBeats extends React.Component {
   }
 
   render() {
+    const {isAdmin} = this.props
     let beats = this.props.beats.beats
     return (
       <div>
         <React.Fragment>
-          {/* <ProductHero />
-          <ProductValues /> */}
-          {/* <ProductCategories />
-      <ProductHowItWorks />
-      <ProductCTA />
-      <ProductSmokingHero /> */}
           <h1 align="center">Browse Beats</h1>
           <ToastContainer />
-          {beats ? (
+          {isAdmin ? (
+            <div>
+              <div align="center">
+                <Button
+                  className="white-link "
+                  color="secondary"
+                  variant="contained"
+                >
+                  <Link to="/add"> Add A New Beat</Link>
+                </Button>
+              </div>
+              <br />
+
+              <ul>
+                {beats.map(beat => (
+                  <li key={beat.id}>
+                    <Link key={beat.id} to={`/beats/${beat.id}`}>
+                      <h2> {beat.title} </h2>
+                    </Link>
+                    <img src={beat.imgUrl} height="400" width="600" />
+                    <br />
+
+                    <Button
+                      className="white-link "
+                      color="secondary"
+                      variant="contained"
+                    >
+                      <Link to="/edit"> Edit Beat</Link>
+                    </Button>
+
+                    <Button
+                      onClick={this.addBeat.bind(this, beat.id)}
+                      className="white-link "
+                      color="secondary"
+                      variant="contained"
+                    >
+                      Remove Beat
+                    </Button>
+
+                    <p>Release Date: {beat.releasedDate}</p>
+                    <p>Genre: {beat.genre}</p>
+                    <p>Price: {beat.price}</p>
+                    <p>Rating: {beat.rating}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : beats ? (
             <ul>
               {beats.map(beat => (
                 <li key={beat.id}>
@@ -92,7 +134,8 @@ export class AllBeats extends React.Component {
 const mapState = state => {
   return {
     beats: state.beat,
-    user: state.user
+    user: state.user,
+    isAdmin: !!state.user.isAdmin
   }
 }
 

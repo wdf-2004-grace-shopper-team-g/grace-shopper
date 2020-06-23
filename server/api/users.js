@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const {User, Order} = require('../db/models')
+const {isAdmin, isUser} = require('./utility')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.get('/', isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
@@ -17,7 +18,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', isAdmin, async (req, res, next) => {
   try {
     // const user = await User.findByPk(req.params.id)
     let user = await User.findOne({where: {id: req.params.id}})
