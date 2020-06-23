@@ -2,7 +2,8 @@ import axios from 'axios'
 
 const GET_CART = 'GET_CART'
 const REMOVE_BEAT_IN_CART = 'REMOVE_BEAT_IN_CART'
-const REMOVE_CART = 'REMOVE_CART'
+const COMPLETE_ORDER = 'COMPLETE_ORDER'
+const EMPTY_CART = 'EMPTY_CART'
 
 const defaultCart = {
   cart: {},
@@ -12,11 +13,21 @@ const defaultCart = {
 
 const getCart = cart => ({type: GET_CART, cart})
 const getRemoveBeat = isRemoved => ({type: REMOVE_BEAT_IN_CART, isRemoved})
+const emptyCart = () => ({type: EMPTY_CART})
 
 export const fetchCart = userId => {
   return async dispatch => {
     const {data} = await axios.get(`/api/orders/${userId}`)
     dispatch(getCart(data))
+  }
+}
+
+export const completeOrder = (userId, targetObj) => {
+  return async dispatch => {
+    const {data} = await axios.put(`/api/orders/posting/${userId}`, targetObj)
+    if (data.message) {
+      dispatch(fetchCart(userId))
+    }
   }
 }
 
