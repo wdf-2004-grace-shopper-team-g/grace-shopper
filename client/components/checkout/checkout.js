@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
 
 const steps = ['Shipping address', 'Payment details', 'Review your order']
 
-function getStepContent(step, cart) {
+function getStepContent(step, cart, props) {
   switch (step) {
     case 0:
       return (
@@ -126,14 +126,14 @@ const Checkout = ({cart, props}) => {
   paymentVal = {cardName, cardNumber, expDate, cvv}
   setPaymentChange = {setCardName, setCardNumber, setExpDate, setCvv}
 
-  const handleNext = ({props}) => {
-    console.log('OUTPUT: handleNext -> cart.id  **', cart.id, props)
+  const handleNext = () => {
+    console.log('OUTPUT: handleNext -> cart.id  **', props)
     setActiveStep(activeStep + 1)
     if (activeStep !== steps.length - 1) {
       console.log('yes yes')
       const userId = cart.id
       const targetObj = {type: 'Completed'}
-      props.completeOrder(userId.id, targetObj)
+      // props.completeOrder(userId.id, targetObj)
     }
   }
 
@@ -170,7 +170,7 @@ const Checkout = ({cart, props}) => {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep, cart)}
+                {getStepContent(activeStep, cart, props)}
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>
