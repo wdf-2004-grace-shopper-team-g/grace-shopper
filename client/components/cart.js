@@ -10,17 +10,30 @@ import {
   ButtonBase,
   Button,
   ButtonGroup,
-  Box
+  Box,
+  InputLabel,
+  Input,
+  MenuItem,
+  FormControl,
+  Select
 } from '@material-ui/core'
+
 import {fetchCart, removeBeat} from '../store/cart'
 
 class Cart extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      userId: ''
+      userId: '',
+      quantity: 1
     }
     this.getPrice = this.getPrice.bind(this)
+    this.selectedValue = this.selectedValue.bind(this)
+  }
+
+  selectedValue(evt) {
+    console.log('OUTPUT: Cart -> selectedValue -> evt', evt.target.value)
+    this.setState({quantity: evt.target.value})
   }
 
   getPrice = priceInPennies => {
@@ -57,7 +70,7 @@ class Cart extends React.Component {
                 className="white-link"
                 color="secondary"
                 component={RouterLink}
-                to="/start-selling"
+                to="/checkout"
                 variant="contained"
               >
                 Proceed to checkout
@@ -121,18 +134,38 @@ class Cart extends React.Component {
                                     aria-label="text primary button group"
                                   >
                                     <Button className="btn-lowerCase">
-                                      Quantity: 1
+                                      Quantity:
+                                      <select
+                                        value={this.state.quantity}
+                                        onChange={this.selectedValue}
+                                      >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                      </select>
                                     </Button>
+
                                     <Button
                                       className="btn-lowerCase"
                                       onClick={this.removeBeat.bind(
                                         this,
                                         beat.id
                                       )}
+                                      gi
                                     >
                                       Remove
                                     </Button>
-                                    <Button className="btn-lowerCase">
+                                    <Button
+                                      className="btn-lowerCase"
+                                      component={RouterLink}
+                                      to="/beats"
+                                    >
                                       Similar Products
                                     </Button>
                                   </ButtonGroup>
