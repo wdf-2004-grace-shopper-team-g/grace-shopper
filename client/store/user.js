@@ -84,7 +84,6 @@ export const logout = () => async dispatch => {
  * REDUCER
  */
 export default function(state = initialState, action) {
-  console.log('accion', action)
   switch (action.type) {
     case GET_ALLUSERS:
       return {...state, users: action.users}

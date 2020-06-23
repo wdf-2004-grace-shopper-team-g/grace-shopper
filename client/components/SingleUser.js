@@ -14,9 +14,7 @@ export class SingleUser extends React.Component {
   }
 
   render() {
-    console.log('user props', this.props)
     let user = this.props.singleUser
-    console.log('usador', user)
 
     return (
       <div>
@@ -44,7 +42,6 @@ export class SingleUser extends React.Component {
 }
 
 const mapState = state => {
-  console.log('estado', state)
   return {
     singleUser: state.user.singleUser
   }
