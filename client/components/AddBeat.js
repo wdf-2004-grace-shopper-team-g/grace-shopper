@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import { setBeat } from ''
-// import { updateBeat } from ''
+import {setBeat, updateBeat} from '../store/beat'
 
 export class AddBeat extends React.Component {
   constructor() {

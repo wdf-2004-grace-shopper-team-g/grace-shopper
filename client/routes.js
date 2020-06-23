@@ -16,8 +16,7 @@ import {
   GuestHome,
   Player,
   Checkout,
-  About,
-  Player
+  About
 } from './components'
 import {me} from './store'
 import {AddBeat} from './components/AddBeat'
