@@ -32,16 +32,30 @@ router.get('/:id', isAdmin, async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', isAdmin, async (req, res, next) => {
   try {
-    if (req.user.isAdmin) {
-      if (req.body) {
-        const newBeat = await Beat.create(req.body)
-        res.status(201).json(newBeat)
-      } else {
-        res.status(404).send('Beat Upload unsuccessful')
-      }
+    if (req.body) {
+      const newBeat = await Beat.create(req.body)
+      res.status(201).json(newBeat)
+    } else {
+      res.status(404).send('Beat Upload unsuccessful')
     }
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const beatId = req.params.id
+    const beat = await Beat.findOne({
+      where: {
+        id: beatId
+      }
+    })
+    const updatedBeat = await beat.update(req.body)
+
+    res.json(updatedBeat)
   } catch (error) {
     next(error)
   }
