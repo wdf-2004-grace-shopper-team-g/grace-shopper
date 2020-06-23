@@ -38,9 +38,7 @@ router.post('/:userId', async (req, res, next) => {
   }
 })
 
-router.put('/posting/:userId', async (req, res, next) => {
-  console.log('OUTPUT: userId*** ', req.params.userId)
-  // const {id, type} = req.body
+router.put('/posting/:userId', (req, res, next) => {
   try {
     Order.update(
       {status: 'Completed'},

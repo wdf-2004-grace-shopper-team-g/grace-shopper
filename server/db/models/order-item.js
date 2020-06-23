@@ -8,7 +8,10 @@ const OrderItem = db.define('orderItem', {
     allowNull: false,
     primaryKey: true
   },
-  quantity: Sequelize.INTEGER
+  quantity: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1
+  }
 })
 
 module.exports = OrderItem
