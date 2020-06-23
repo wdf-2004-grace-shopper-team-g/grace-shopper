@@ -5,6 +5,7 @@ import history from '../history'
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER'
+const GET_SINGLEUSER = 'GET_SINGLEUSER'
 const GET_ALLUSERS = 'GET_ALLUSERS'
 const REMOVE_USER = 'REMOVE_USER'
 
@@ -20,6 +21,7 @@ const initialState = {
  */
 const getUser = user => ({type: GET_USER, user})
 const fetchAllUsers = users => ({type: GET_ALLUSERS, users})
+const fetchSingleUser = user => ({type: GET_SINGLEUSER, user})
 const removeUser = () => ({type: REMOVE_USER})
 
 /**
@@ -29,6 +31,15 @@ export const getAllUsers = () => async dispatch => {
   try {
     const res = await axios.get('/api/users/')
     dispatch(fetchAllUsers(res.data || initialState))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const getSingleUser = id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/users/${id}`)
+    dispatch(fetchSingleUser(res.data || initialState))
   } catch (err) {
     console.error(err)
   }
@@ -73,9 +84,12 @@ export const logout = () => async dispatch => {
  * REDUCER
  */
 export default function(state = initialState, action) {
+  console.log('accion', action)
   switch (action.type) {
     case GET_ALLUSERS:
       return {...state, users: action.users}
+    case GET_SINGLEUSER:
+      return {...state, singleUser: action.user}
     case GET_USER:
       return action.user
     case REMOVE_USER:

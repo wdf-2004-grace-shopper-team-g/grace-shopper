@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import SingleBeat from './components/SingleBeat'
+import SingleUser from './components/SingleUser'
+
 import AllBeats from './components/AllBeats'
 import {
   Login,
@@ -51,6 +53,7 @@ class Routes extends Component {
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/users" component={AllUsers} />
+            <Route path="/users/:id" component={SingleUser} />
           </Switch>
         )}
         {isLoggedIn && (
