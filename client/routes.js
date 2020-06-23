@@ -19,7 +19,7 @@ import {
   About
 } from './components'
 import {me} from './store'
-import {AddBeat} from './components/AddBeat'
+import AddBeat from './components/AddBeat'
 
 // import { } from './components/AllUsers'
 
