@@ -6,6 +6,7 @@ import history from '../history'
  */
 const GET_ALLBEATS = 'GET_ALLBEATS'
 const GET_SINGLEBEAT = 'GET_SINGLEBEAT'
+const ADD_BEAT = 'ADD_BEAT'
 
 /**
  * INITIAL STATE
@@ -20,6 +21,7 @@ const initialState = {
  */
 const fetchSingleBeat = beat => ({type: GET_SINGLEBEAT, beat})
 const fetchAllBeats = beats => ({type: GET_ALLBEATS, beats})
+const addBeat = beat => ({type: ADD_BEAT, beat})
 
 /**
  * THUNK CREATORS
@@ -42,6 +44,26 @@ export const getAllBeats = () => async dispatch => {
   }
 }
 
+export const updateBeat = (beat, id) => async dispatch => {
+  try {
+    const res = await axios.put(`/api/beats/${id}`, beat)
+    const newBeat = fetchSingleBeat(res.data)
+    dispatch(newBeat)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const setBeat = beat => async dispatch => {
+  try {
+    const res = await axios.post(`/api/beats/`, beat)
+    const newBeat = addBeat(res.data)
+    dispatch(newBeat)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 /**
  * REDUCER
  */
@@ -51,6 +73,8 @@ export default function(state = initialState, action) {
       return {...state, beat: action.beat}
     case GET_ALLBEATS:
       return {...state, beats: action.beats}
+    case ADD_BEAT:
+      return {...state, beat: action.beat}
     default:
       return state
   }

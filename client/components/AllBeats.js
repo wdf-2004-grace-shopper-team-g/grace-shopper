@@ -57,7 +57,7 @@ export class AllBeats extends React.Component {
                   color="secondary"
                   variant="contained"
                 >
-                  Add A New Beat
+                  <Link to="/add"> Add A New Beat</Link>
                 </Button>
               </div>
               <br />
@@ -76,7 +76,7 @@ export class AllBeats extends React.Component {
                       color="secondary"
                       variant="contained"
                     >
-                      Edit Beat
+                      <Link to="/edit"> Edit Beat</Link>
                     </Button>
 
                     <Button

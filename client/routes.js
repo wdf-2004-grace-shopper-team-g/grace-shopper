@@ -18,6 +18,7 @@ import {
   Player
 } from './components'
 import {me} from './store'
+import {AddBeat} from './components/AddBeat'
 
 // import { } from './components/AllUsers'
 
@@ -54,6 +55,7 @@ class Routes extends Component {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/users" component={AllUsers} />
             <Route path="/users/:id" component={SingleUser} />
+            <Route path="/add" component={AddBeat} />
           </Switch>
         )}
         {isLoggedIn && (
