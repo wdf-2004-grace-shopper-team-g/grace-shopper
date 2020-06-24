@@ -4,18 +4,11 @@ import {connect} from 'react-redux'
 import {getAllBeats} from '../store/beat'
 import {Button} from '@material-ui/core'
 import {addBeatToCart} from '../store/cart'
-
+import {deleteBeat} from '../store/deletebeat'
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import AppFooter from './modules/views/AppFooter'
 
-import ProductValues from './modules/views/ProductValues'
-
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import Rating from '@material-ui/lab/Rating'
-import {withStyles} from '@material-ui/core/styles'
-import FavoriteIcon from '@material-ui/icons/Favorite'
 import CustomizedRatings from './rating'
 
 export class AllBeats extends React.Component {
@@ -76,7 +69,7 @@ export class AllBeats extends React.Component {
                     </Button>
 
                     <Button
-                      onClick={this.addBeat.bind(this, beat.id)}
+                      onClick={() => this.props.removeBeat(beat.id)}
                       className="white-link "
                       color="secondary"
                       variant="contained"
@@ -139,7 +132,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getAllBeats: () => dispatch(getAllBeats()),
-    addBeatToCart: (userId, beatId) => dispatch(addBeatToCart(userId, beatId))
+    addBeatToCart: (userId, beatId) => dispatch(addBeatToCart(userId, beatId)),
+    removeBeat: id => dispatch(deleteBeat(id))
   }
 }
 

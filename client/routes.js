@@ -19,8 +19,7 @@ import {
 } from './components'
 import {me} from './store'
 import AddBeat from './components/AddBeat'
-
-// import { } from './components/AllUsers'
+import EditBeat from './components/EditBeat'
 
 /**
  * COMPONENT
@@ -56,6 +55,7 @@ class Routes extends Component {
             <Route exact path="/users" component={AllUsers} />
             <Route path="/users/:id" component={SingleUser} />
             <Route path="/add" component={AddBeat} />
+            <Route path="/edit" component={EditBeat} />
           </Switch>
         )}
         {isLoggedIn && (
