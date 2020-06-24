@@ -63,6 +63,10 @@ form div {
   background-color: #0061f2 !important;
 }
 
+.mt-3 {
+  margin-top: 4rem !important;
+}
+
 /* LOGGED USER NAVBAR */
 
 .white-link,
