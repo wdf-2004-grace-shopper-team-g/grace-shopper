@@ -18,7 +18,7 @@ import {
   Select
 } from '@material-ui/core'
 
-import {fetchCart, removeBeat} from '../store/cart'
+import {fetchCart, removeBeat, updateQuantityInDB} from '../store/cart'
 
 class Cart extends React.Component {
   constructor(props) {
@@ -28,25 +28,27 @@ class Cart extends React.Component {
       quantity: 1
     }
     this.getPrice = this.getPrice.bind(this)
-    // this.selectedValue = this.selectedValue.bind(this)
+    this.selectedValue = this.selectedValue.bind(this)
   }
 
-  selectedValue(evt, beatId) {
-    // const targetObj = {
-    //   beatId: beatId,
-    //   quantity: evt.target.value
-    // }
-    console.log(
-      'OUTPUT: Cart -> selectedValue -> targetObj',
-      this.state.userId,
-      evt
-    )
-    // this.setState({quantity: evt.target.value})
-    // this.props.addBeatToCart(this.state.userId, targetObj)
+  async componentDidMount() {
+    const user = await this.props.user
+    this.setState({userId: user.id})
+    this.props.fetchCart(user.id)
+  }
+
+  selectedValue(evt, beatId = 2) {
+    const targetObj = {
+      beatId: beatId,
+      quantity: evt.target.value
+    }
+    console.log('OUTPUT: Cart -> selectedValue -> targetObj', targetObj)
+
+    // this.setState({quantity: numBeats})
+    this.props.updateQuantityInDB(2, targetObj)
   }
 
   getPrice = (priceInPennies, quantity = 1) => {
-    console.log('OUTPUT: Cart -> getPrice -> quantity', quantity)
     const numBeats = Number(quantity)
     let numPennies = Number(priceInPennies)
     let dollars = numBeats * numPennies / 100
@@ -61,12 +63,8 @@ class Cart extends React.Component {
     this.props.removeBeat(this.state.userId, beatId)
   }
 
-  async componentDidMount() {
-    const user = await this.props.user
-    this.setState({userId: user.id})
-    this.props.fetchCart(user.id)
-  }
   render() {
+    console.log('compDid', this.props)
     const cartInfo = this.props.cart
     return (
       <Container>
@@ -149,11 +147,11 @@ class Cart extends React.Component {
                                       Quantity:
                                       <select
                                         value={beat.orderItem.quantity}
-                                        // onChange={this.selectedValue.bind(this,beat.id)}
-                                        onChange={this.selectedValue.bind(
-                                          this,
-                                          beat.id
-                                        )}
+                                        onChange={this.selectedValue}
+                                        // onChange={this.selectedValue.bind(
+                                        //   this,
+                                        //   beat.id
+                                        // )}
                                       >
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -230,6 +228,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     fetchCart: userId => dispatch(fetchCart(userId)),
+    updateQuantityInDB: (userId, obj) =>
+      dispatch(updateQuantityInDB(userId, obj)),
     removeBeat: (userId, beatId) => dispatch(removeBeat(userId, beatId))
   }
 }

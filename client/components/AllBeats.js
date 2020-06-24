@@ -9,14 +9,14 @@ import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import AppFooter from './modules/views/AppFooter'
 
-import ProductValues from './modules/views/ProductValues'
-
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import Rating from '@material-ui/lab/Rating'
-import {withStyles} from '@material-ui/core/styles'
-import FavoriteIcon from '@material-ui/icons/Favorite'
 import CustomizedRatings from './rating'
+import {Howl, Howler} from 'howler'
+
+// const audiClips = [
+//   { sound:"http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3", label: "rain" },
+//   { sound:"http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3", label: "rain" },
+//   { sound:"http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3", label: "rain" },
+// ]
 
 export class AllBeats extends React.Component {
   constructor(props) {
@@ -37,6 +37,44 @@ export class AllBeats extends React.Component {
     this.props.addBeatToCart(this.state.userId, beatId)
     toast.success('🚀  Added Successfully!')
   }
+
+  soundPlay = (src, play) => {
+    const sound = new Howl({
+      src,
+      html5: true
+    })
+    if (!play) {
+      console.log('pau')
+      sound.stop()
+      sound.pause()
+      sound.mute()
+    } else {
+      sound.play()
+    }
+  }
+
+  soundPause = src => {
+    const sound = new Howl({
+      src: [
+        1,
+        2,
+        3,
+        'http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3',
+        5
+      ],
+      html5: true
+    })
+    sound.stop()
+    sound.pause()
+  }
+  // soundPause = ([beatId]) => {
+  //   console.log("OUTPUT: AllBeats -> soundPause -> soundPause")
+  //   const  sound = new Howl({html5: true})
+  //   sound.stop([beatId])
+  //   // howlers[gifId].pause();
+  //   // // sound.pause(id);
+  //   // return sound.playing() ? sound.pause() : sound.play();
+  // }
 
   render() {
     const {isAdmin} = this.props
@@ -110,11 +148,28 @@ export class AllBeats extends React.Component {
                   >
                     Add to cart
                   </Button>
+                  <Button
+                    onClick={() => this.soundPlay(beat.audioUrl, 'play')}
+                    className="white-link "
+                    color="secondary"
+                    variant="contained"
+                  >
+                    Play
+                  </Button>
+                  <Button
+                    onClick={() => this.soundPlay(beat.audioUrl)}
+                    className="white-link "
+                    color="secondary"
+                    variant="contained"
+                  >
+                    Pause
+                  </Button>
 
                   <p>Release Date: {beat.releasedDate}</p>
                   <p>Genre: {beat.genre}</p>
                   <p>Price: {beat.price}</p>
-                  <p>Rating: {beat.rating}</p>
+                  <p>Rating:</p>
+                  <CustomizedRatings rating={beat.rating} />
                 </li>
               ))}
             </ul>
