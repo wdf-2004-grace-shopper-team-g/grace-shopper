@@ -17,7 +17,7 @@ export class SingleBeat extends React.Component {
     let beat = this.props.beat.beat
 
     return (
-      <div>
+      <div align="center" className="background">
         <h3>Check this beat out!</h3>
 
         {beat ? (
