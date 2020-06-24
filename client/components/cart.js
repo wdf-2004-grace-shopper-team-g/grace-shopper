@@ -42,10 +42,8 @@ class Cart extends React.Component {
       beatId: beatId,
       quantity: evt.target.value
     }
-    console.log('OUTPUT: Cart -> selectedValue -> targetObj', targetObj)
-
     // this.setState({quantity: numBeats})
-    this.props.updateQuantityInDB(2, targetObj)
+    // this.props.updateQuantityInDB(2, targetObj)
   }
 
   getPrice = (priceInPennies, quantity = 1) => {
