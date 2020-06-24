@@ -7,20 +7,16 @@ import {addBeatToCart} from '../store/cart'
 
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
-import ProductCategories from './modules/views/ProductCategories'
-import ProductSmokingHero from './modules/views/ProductSmokingHero'
 import AppFooter from './modules/views/AppFooter'
-import ProductHero from './modules/views/ProductHero'
-import ProductValues from './modules/views/ProductValues'
-import ProductHowItWorks from './modules/views/ProductHowItWorks'
-import ProductCTA from './modules/views/ProductCTA'
-import AppAppBar from './modules/views/AppAppBar'
-import {image} from 'faker'
 
-/**
- * COMPONENT
- */
+import ProductValues from './modules/views/ProductValues'
+
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import Rating from '@material-ui/lab/Rating'
+import {withStyles} from '@material-ui/core/styles'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import CustomizedRatings from './rating'
 
 export class AllBeats extends React.Component {
   constructor(props) {
@@ -62,7 +58,6 @@ export class AllBeats extends React.Component {
                 </Button>
               </div>
               <br />
-
               <ul>
                 {beats.map(beat => (
                   <li key={beat.id}>
@@ -92,7 +87,8 @@ export class AllBeats extends React.Component {
                     <p>Release Date: {beat.releasedDate}</p>
                     <p>Genre: {beat.genre}</p>
                     <p>Price: {beat.price}</p>
-                    <p>Rating: {beat.rating}</p>
+                    <p>Rating</p>
+                    <CustomizedRatings rating={beat.rating} />
                   </li>
                 ))}
               </ul>

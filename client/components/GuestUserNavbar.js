@@ -58,7 +58,7 @@ const GuestUserNavbar = ({logout, cart}) => {
               </Link>
             </Badge>
 
-            <Badge badgeContent={2} color="secondary" className="xm-1">
+            <Badge color="secondary" className="xm-1">
               <Link className="white-link" component={RouterLink} to="/cart">
                 <ShoppingCartOutlinedIcon fontSize="large" />
               </Link>
