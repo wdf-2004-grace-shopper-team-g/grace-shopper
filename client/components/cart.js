@@ -28,16 +28,28 @@ class Cart extends React.Component {
       quantity: 1
     }
     this.getPrice = this.getPrice.bind(this)
-    this.selectedValue = this.selectedValue.bind(this)
+    // this.selectedValue = this.selectedValue.bind(this)
   }
 
-  selectedValue(evt) {
-    console.log('OUTPUT: Cart -> selectedValue -> evt', evt.target.value)
-    this.setState({quantity: evt.target.value})
+  selectedValue(evt, beatId) {
+    // const targetObj = {
+    //   beatId: beatId,
+    //   quantity: evt.target.value
+    // }
+    console.log(
+      'OUTPUT: Cart -> selectedValue -> targetObj',
+      this.state.userId,
+      evt
+    )
+    // this.setState({quantity: evt.target.value})
+    // this.props.addBeatToCart(this.state.userId, targetObj)
   }
 
-  getPrice = priceInPennies => {
-    let dollars = Number(priceInPennies) / 100
+  getPrice = (priceInPennies, quantity = 1) => {
+    console.log('OUTPUT: Cart -> getPrice -> quantity', quantity)
+    const numBeats = Number(quantity)
+    let numPennies = Number(priceInPennies)
+    let dollars = numBeats * numPennies / 100
     dollars = dollars.toLocaleString('en-US', {
       style: 'currency',
       currency: 'USD'
@@ -136,8 +148,12 @@ class Cart extends React.Component {
                                     <Button className="btn-lowerCase">
                                       Quantity:
                                       <select
-                                        value={this.state.quantity}
-                                        onChange={this.selectedValue}
+                                        value={beat.orderItem.quantity}
+                                        // onChange={this.selectedValue.bind(this,beat.id)}
+                                        onChange={this.selectedValue.bind(
+                                          this,
+                                          beat.id
+                                        )}
                                       >
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -157,7 +173,6 @@ class Cart extends React.Component {
                                         this,
                                         beat.id
                                       )}
-                                      gi
                                     >
                                       Remove
                                     </Button>
@@ -173,7 +188,10 @@ class Cart extends React.Component {
                               </Grid>
                               <Grid item>
                                 <Typography variant="subtitle1">
-                                  {this.getPrice(beat.price)}
+                                  {this.getPrice(
+                                    beat.price,
+                                    beat.orderItem.quantity
+                                  )}
                                 </Typography>
                               </Grid>
                             </Grid>
@@ -186,7 +204,16 @@ class Cart extends React.Component {
               : null}
           </div>
         ) : (
-          <CircularProgress color="secondary" />
+          <Box display="flex" justifyContent="center" className="mt-3">
+            <Button
+              size="large"
+              variant="contained"
+              component={RouterLink}
+              to="/beats"
+            >
+              Shop Now
+            </Button>
+          </Box>
         )}
       </Container>
     )

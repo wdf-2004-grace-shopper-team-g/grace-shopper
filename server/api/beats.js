@@ -3,7 +3,8 @@ const {Beat} = require('../db/models/')
 const {isAdmin, isUser} = require('./utility')
 module.exports = router
 
-router.get('/', isAdmin, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
+  // router.get('/', isAdmin, async (req, res, next) => {
   try {
     const beats = await Beat.findAll({
       order: [['updatedAt', 'DESC']]

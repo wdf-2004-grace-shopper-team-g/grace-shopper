@@ -96,8 +96,8 @@ function getStepContent(step, cart) {
   }
 }
 
-const Checkout = ({cart, props}) => {
-  console.log('OUTPUT: Checkout -> props **', props)
+const Checkout = props => {
+  const {cart, user} = props
   const classes = useStyles()
   const [activeStep, setActiveStep] = React.useState(0)
   const [firstName, setFirstName] = React.useState('')
@@ -126,14 +126,12 @@ const Checkout = ({cart, props}) => {
   paymentVal = {cardName, cardNumber, expDate, cvv}
   setPaymentChange = {setCardName, setCardNumber, setExpDate, setCvv}
 
-  const handleNext = ({props}) => {
-    console.log('OUTPUT: handleNext -> cart.id  **', cart.id, props)
+  const handleNext = () => {
     setActiveStep(activeStep + 1)
-    if (activeStep !== steps.length - 1) {
-      console.log('yes yes')
-      const userId = cart.id
+    if (activeStep === steps.length - 1) {
+      const userId = user.id
       const targetObj = {type: 'Completed'}
-      props.completeOrder(userId.id, targetObj)
+      props.completeOrder(userId, targetObj)
     }
   }
 
