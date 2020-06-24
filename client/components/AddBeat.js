@@ -66,7 +66,7 @@ export class AddBeat extends React.Component {
   render() {
     console.log('dis props', this.props)
     return (
-      <div>
+      <div align="center">
         <ToastContainer />
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">Beat Title:</label>

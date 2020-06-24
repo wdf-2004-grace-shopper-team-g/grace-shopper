@@ -49,6 +49,7 @@ router.post('/', isAdmin, async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
     const beatId = req.params.id
+    console.log('this is beat id', beatId)
     const beat = await Beat.findOne({
       where: {
         id: beatId
@@ -57,6 +58,19 @@ router.put('/:id', async (req, res, next) => {
     const updatedBeat = await beat.update(req.body)
 
     res.json(updatedBeat)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    await Beat.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.status(204).end()
   } catch (error) {
     next(error)
   }
