@@ -34,7 +34,7 @@ const Beat = db.define('beats', {
   imgUrl: {
     type: Sequelize.STRING,
     defaultValue:
-      'http://www.droid-life.com/wp-content/uploads/2014/05/beats-logo.jpg'
+      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.visitrenotahoe.com%2Fwp-content%2Fuploads%2F2017%2F07%2F0006_live-music.jpg&f=1&nofb=1'
   },
   audioUrl: {
     type: Sequelize.STRING,

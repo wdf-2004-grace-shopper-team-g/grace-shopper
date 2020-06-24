@@ -16,6 +16,7 @@ import ProductValues from './modules/views/ProductValues'
 import ProductHowItWorks from './modules/views/ProductHowItWorks'
 import ProductCTA from './modules/views/ProductCTA'
 import AppAppBar from './modules/views/AppAppBar'
+import {image} from 'faker'
 
 /**
  * COMPONENT
@@ -45,13 +46,13 @@ export class AllBeats extends React.Component {
     const {isAdmin} = this.props
     let beats = this.props.beats.beats
     return (
-      <div>
+      <div align="center" className="background">
         <React.Fragment>
-          <h1 align="center">Browse Beats</h1>
+          <h1>Browse Beats</h1>
           <ToastContainer />
           {isAdmin ? (
             <div>
-              <div align="center">
+              <div>
                 <Button
                   className="white-link "
                   color="secondary"

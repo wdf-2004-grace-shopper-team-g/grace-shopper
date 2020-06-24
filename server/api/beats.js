@@ -3,7 +3,7 @@ const {Beat} = require('../db/models/')
 const {isAdmin, isUser} = require('./utility')
 module.exports = router
 
-router.get('/', isAdmin, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const beats = await Beat.findAll({
       order: [['updatedAt', 'DESC']]
@@ -17,7 +17,7 @@ router.get('/', isAdmin, async (req, res, next) => {
   }
 })
 
-router.get('/:id', isAdmin, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     // const user = await User.findByPk(req.params.id)
     let beat = await Beat.findOne({where: {id: req.params.id}})

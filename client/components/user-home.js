@@ -13,9 +13,9 @@ export const UserHome = props => {
   const {email, isAdmin} = props
 
   return (
-    <div>
+    <div align="center">
       {isAdmin ? (
-        <div>
+        <div align="center" className="background">
           <h3>Welcome Admin, {email}</h3>
           <ProductHero />
           <ProductValues />
@@ -23,7 +23,7 @@ export const UserHome = props => {
           <AppFooter />
         </div>
       ) : (
-        <div>
+        <div align="center" className="background">
           <h3>Welcome, {email}</h3>
           <ProductHero />
           <ProductValues />

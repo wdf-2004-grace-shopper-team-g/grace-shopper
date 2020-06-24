@@ -70,7 +70,8 @@ async function seed() {
       releasedDate: faker.date.past(),
       price: 1000,
       rating: 4,
-      imgUrl: faker.image.avatar(),
+      imgUrl:
+        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.visitrenotahoe.com%2Fwp-content%2Fuploads%2F2017%2F07%2F0006_live-music.jpg&f=1&nofb=1',
       audioUrl:
         'http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3'
     },
@@ -81,7 +82,8 @@ async function seed() {
       releasedDate: faker.date.past(),
       price: 105,
       rating: 5,
-      imgUrl: faker.image.avatar(),
+      imgUrl:
+        'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimages5.fanpop.com%2Fimage%2Fphotos%2F27400000%2FMusic-music-27454281-1024-768.jpg&f=1&nofb=1',
       audioUrl:
         'http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3'
     },
@@ -92,7 +94,7 @@ async function seed() {
       releasedDate: faker.date.past(),
       price: 9050,
       rating: 5,
-      imgUrl: faker.image.avatar(),
+      imgUrl: 'https://i.ytimg.com/vi/QMZrnCGQlCA/maxresdefault.jpg',
       audioUrl:
         'http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3'
     },
@@ -103,7 +105,8 @@ async function seed() {
       releasedDate: faker.date.past(),
       price: 2050,
       rating: 5,
-      imgUrl: faker.image.avatar(),
+      imgUrl:
+        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FWI1xExDWVF0%2Fmaxresdefault.jpg&f=1&nofb=1',
       audioUrl:
         'http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3'
     },
@@ -114,7 +117,8 @@ async function seed() {
       releasedDate: faker.date.past(),
       price: 3050,
       rating: 5,
-      imgUrl: faker.image.avatar(),
+      imgUrl:
+        'http://static5.comicvine.com/uploads/original/10/100555/3076403-05.jpg',
       audioUrl:
         'http://soundbible.com/mp3/Depth%20Charge%20Short-SoundBible.com-1303947570.mp3'
     }

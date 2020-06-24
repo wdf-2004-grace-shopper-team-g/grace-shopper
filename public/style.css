@@ -76,3 +76,14 @@ form div {
 .toolbarRight {
   margin-left: auto;
 }
+
+/* beats background */
+
+.background {
+  background: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.eT6n9az7mvE5dsPV1HijfgHaDX%26pid%3DApi&f=1)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

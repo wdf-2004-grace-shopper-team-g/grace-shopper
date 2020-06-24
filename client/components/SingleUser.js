@@ -17,7 +17,7 @@ export class SingleUser extends React.Component {
     let user = this.props.singleUser
 
     return (
-      <div>
+      <div align="center" className="background">
         <h3>Check this user out!</h3>
 
         {user ? (

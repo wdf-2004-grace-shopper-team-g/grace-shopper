@@ -16,7 +16,7 @@ export class AllUsers extends React.Component {
     let users = this.props.users
 
     return (
-      <div>
+      <div align="center" className="background">
         <h3>All Users</h3>
         {users ? (
           <ul>

@@ -22,7 +22,7 @@ class UserProfile extends React.Component {
   render() {
     const user = this.props.user
     return (
-      <div>
+      <div align="center" className="background">
         <h2>User Info</h2>
         <p>Name: {user.firstName}</p>
         <p>User type: {user.userType}</p>
