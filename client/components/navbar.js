@@ -19,7 +19,7 @@ class Navbar extends React.Component {
           {isAdmin ? (
             <div>
               {/* The navbar will show these links after you log in */}
-              <LoggedAdminUserNavbar logout={handleClick} cart={cart} />
+              <x logout={handleClick} cart={cart} />
             </div>
           ) : isLoggedIn ? (
             <div>
